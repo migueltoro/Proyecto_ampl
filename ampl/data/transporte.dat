@@ -1,0 +1,15 @@
+set ORIG := A B;
+set DEST := X Y;
+
+param oferta :=
+A 40
+B 60;
+
+param demanda :=
+X 50
+Y 50;
+
+param coste:
+    X Y :=
+A   2 4
+B   3 1;

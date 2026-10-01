@@ -1,0 +1,99 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "AMPL: Run modelo",
+            "type": "shell",
+            "command": "C:\\Users\\Miguel Toro\\AMPL\\ampl.exe",
+            "args": [
+                "modelo.run"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}\\ampl\\scripts"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "AMPL: Run transporte",
+            "type": "shell",
+            "command": "C:\\Users\\Miguel Toro\\AMPL\\ampl.exe",
+            "args": [
+                "transporte.run"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}\\ampl\\scripts"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "AMPL: Run reinas",
+            "type": "shell",
+            "command": "C:\\Users\\Miguel Toro\\AMPL\\ampl.exe",
+            "args": [
+                "reinas.run"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}\\ampl\\scripts"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "AMPL: Run color",
+            "type": "shell",
+            "command": "C:\\Users\\Miguel Toro\\AMPL\\ampl.exe",
+            "args": [
+                "color.run"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}\\ampl\\scripts"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Python: Generar grafo aleatorio",
+            "type": "process",
+            "command": "py",
+            "args": [
+                "${workspaceFolder}\\ampl\\scripts\\generar_grafo.py",
+                "--vertices",
+                "${input:colorGraphVertices}",
+                "--probabilidad",
+                "${input:colorGraphProbability}",
+                "--salida",
+                "${workspaceFolder}\\ampl\\data\\${input:colorGraphOutput}"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}\\ampl\\scripts"
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated",
+                "focus": false,
+                "echo": true,
+                "clear": true,
+                "showReuseMessage": false
+            },
+            "problemMatcher": []
+        }
+    ],
+    "inputs": [
+        {
+            "id": "colorGraphVertices",
+            "type": "promptString",
+            "description": "Numero de vertices",
+            "default": "100"
+        },
+        {
+            "id": "colorGraphProbability",
+            "type": "promptString",
+            "description": "Probabilidad de incluir cada arista (0 a 1)",
+            "default": "0.3"
+        },
+        {
+            "id": "colorGraphOutput",
+            "type": "promptString",
+            "description": "Nombre del fichero de salida dentro de ampl/data (incluye .dat)",
+            "default": "color2.dat"
+        }
+    ]
+}

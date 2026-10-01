@@ -1,0 +1,46 @@
+reset;
+
+model ../models/color.mod;
+data  ../data/color.dat;
+
+option solver cbc;
+
+solve;
+
+printf "\nNumero cromatico encontrado = %d\n\n",
+       NumColors;
+
+printf "Color asignado a cada vertice\n";
+printf "-----------------------------\n";
+
+for {v in V} {
+    printf "Vertice %2d -> Color ", v;
+
+    printf "%d\n", Color[v];
+}
+
+printf "\nColores utilizados:\n";
+
+for {c in C : numberof c in ({v in V} Color[v]) > 0}
+    printf "Color %d\n", c;
+
+printf "\nGenerando grafo en color.gv...\n";
+
+printf "graph Coloring {\n" > "color.gv";
+printf "  graph [overlap=false];\n" >> "color.gv";
+printf '  node [shape=circle, style=filled, colorscheme="set312"];\n' >> "color.gv";
+
+for {v in V} {
+    printf '  %d [label="%d", fillcolor="', v, v >> "color.gv";
+
+    printf "%d", Color[v] >> "color.gv";
+
+    printf '"];\n' >> "color.gv";
+}
+
+for {(i,j) in E}
+    printf "  %d -- %d;\n", i, j >> "color.gv";
+
+printf "}\n" >> "color.gv";
+
+printf "Archivo generado: color.gv\n";

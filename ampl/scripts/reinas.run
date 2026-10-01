@@ -1,0 +1,23 @@
+reset;
+
+model ../models/reinas.mod;
+
+let N := 1000;
+
+option solver gecode;
+
+solve;
+
+printf "\nSolucion para N = %d\n\n", N;
+
+for {i in 1..N} {
+    for {j in 1..N} {
+        printf "%s ",
+            if q[i] = j then "Q"
+            else ".";
+    }
+    printf "\n";
+}
+
+printf "\nVector de columnas:\n";
+display q;

@@ -1,0 +1,15 @@
+
+# Cargar el modelo
+model ../models/modelo.mod;
+
+# Cargar datos (si usas archivo .dat separado)
+# data datos.dat;
+
+# Seleccionar el solver (ej. cbc, gurobi, cplex)
+option solver cbc;
+
+# Resolver
+solve;
+
+# Mostrar resultados
+display x, y, Ganancia;

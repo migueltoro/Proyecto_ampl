@@ -1,0 +1,10 @@
+reset;
+
+model ../models/transporte.mod;
+data ../data/transporte.dat;
+
+option solver cbc;
+
+solve;
+
+display x;
