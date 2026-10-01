@@ -51,16 +51,17 @@
         },
         {
             "label": "Python: Generar grafo aleatorio",
-            "type": "process",
+            "type": "shell",
             "command": "py",
             "args": [
+                "-u",
                 "${workspaceFolder}\\ampl\\scripts\\generar_grafo.py",
                 "--vertices",
-                "${input:colorGraphVertices}",
+                "20",
                 "--probabilidad",
-                "${input:colorGraphProbability}",
+                "0.3",
                 "--salida",
-                "${workspaceFolder}\\ampl\\data\\${input:colorGraphOutput}"
+                "${workspaceFolder}\\ampl\\data\\color.dat"
             ],
             "options": {
                 "cwd": "${workspaceFolder}\\ampl\\scripts"
@@ -68,32 +69,12 @@
             "presentation": {
                 "reveal": "always",
                 "panel": "dedicated",
-                "focus": false,
+                "focus": true,
                 "echo": true,
                 "clear": true,
                 "showReuseMessage": false
             },
             "problemMatcher": []
-        }
-    ],
-    "inputs": [
-        {
-            "id": "colorGraphVertices",
-            "type": "promptString",
-            "description": "Numero de vertices",
-            "default": "100"
-        },
-        {
-            "id": "colorGraphProbability",
-            "type": "promptString",
-            "description": "Probabilidad de incluir cada arista (0 a 1)",
-            "default": "0.3"
-        },
-        {
-            "id": "colorGraphOutput",
-            "type": "promptString",
-            "description": "Nombre del fichero de salida dentro de ampl/data (incluye .dat)",
-            "default": "color2.dat"
         }
     ]
 }
