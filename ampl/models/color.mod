@@ -3,7 +3,7 @@
 # Minimizar el numero de colores utilizados
 # -------------------------------------------------
 
-param n integer > 0 <= 10;
+param n integer > 0;
 
 set V := 1..n;
 
@@ -14,14 +14,13 @@ set E within {V,V};
 set C := 1..n;
 
 # Color asignado a cada vertice
-var Color{V} integer >= 1 <= n;
+var Color{V} integer >= 1 <= 10;
 
 # Los extremos de cada arista deben tener colores diferentes
 s.t. AdjacentDiff{(i,j) in E}:
    # alldiff (Color[i], Color[j]);
    Color[i] != Color[j];
 
-# Contar cuantos colores aparecen en la asignacion
+# Minimizar el mayor color asignado
 minimize NumColors:
-    count {c in C}
-        (numberof c in ({v in V} Color[v]) > 0);
+    max {v in V} Color[v];

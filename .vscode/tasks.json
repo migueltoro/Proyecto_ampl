@@ -57,7 +57,7 @@
                 "-u",
                 "${workspaceFolder}\\ampl\\scripts\\generar_grafo.py",
                 "--vertices",
-                "30",
+                "60",
                 "--probabilidad",
                 "0.3",
                 "--salida",

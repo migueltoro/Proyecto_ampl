@@ -3,7 +3,7 @@ reset;
 model ../models/color.mod;
 data  ../data/color.dat;
 
-option solver cbc;
+option solver gecode;
 
 solve;
 
