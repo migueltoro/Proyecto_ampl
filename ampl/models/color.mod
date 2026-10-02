@@ -3,7 +3,7 @@
 # Minimizar el numero de colores utilizados
 # -------------------------------------------------
 
-param n integer > 0;
+param n integer > 0 <= 10;
 
 set V := 1..n;
 
@@ -18,7 +18,8 @@ var Color{V} integer >= 1 <= n;
 
 # Los extremos de cada arista deben tener colores diferentes
 s.t. AdjacentDiff{(i,j) in E}:
-    alldiff (Color[i], Color[j]);
+   # alldiff (Color[i], Color[j]);
+   Color[i] != Color[j];
 
 # Contar cuantos colores aparecen en la asignacion
 minimize NumColors:
